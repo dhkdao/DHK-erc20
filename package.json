@@ -1,6 +1,24 @@
 {
+  "name": "dhk-erc20",
+  "version": "1.0.0",
+  "description": "ERC20 token contract for DHK - dao",
+  "scripts": {
+    "test": "hardhat test",
+    "build": "hardhat compile",
+    "format": "prettier --write . --plugin=prettier-plugin-solidity",
+    "lint": "solhint contracts/**/*.sol && eslint './**/*.{js,mjs,ts}'",
+    "lint:fix": "eslint './**/*.{js,mjs,ts}' --fix"
+  },
   "devDependencies": {
+    "@eslint/js": "^9.39.1",
     "@nomicfoundation/hardhat-toolbox-viem": "^4.1.1",
-    "hardhat": "^2.27.1"
+    "eslint": "^9.39.1",
+    "eslint-config-prettier": "^10.1.8",
+    "eslint-plugin-simple-import-sort": "^12.1.1",
+    "hardhat": "^2.27.1",
+    "prettier": "^3.7.3",
+    "prettier-plugin-solidity": "^2.2.0",
+    "solhint": "^6.0.1",
+    "typescript-eslint": "^8.48.0"
   }
 }
