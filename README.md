@@ -29,13 +29,12 @@ cast send 0x4e073a1751953377f9b350b35847dedc4af742ea \
 npx hardhat ignition deploy ./ignition/modules/DHK.ts \
     --strategy create2 \
     --parameters ignition/parameters.json \
-    --network anvil
+    --network anvil 
 ```
 
 Mint of 7mil DHK.
-
 ```
-cast send 0x759938b0D935f6e3eF60b01E0981F271DEd7078E \
+cast send 0xCBAEc04B10413aD997b20382Be88Eb3cf3c5F9BA \
 	"mint(address,uint256)" \
 	0x4e073a1751953377f9b350b35847dedc4af742ea 7000000000000 \
 	--rpc-url https://sepolia.base.org \
