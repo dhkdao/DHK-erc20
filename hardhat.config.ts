@@ -16,7 +16,6 @@ const create2Salt =
   process.env.CREATE2_SALT ||
   "0x0000000000000000000000000000000000000000000000000000000000000000";
 
-
 const config: HardhatUserConfig = {
   solidity: "0.8.28",
   networks: {

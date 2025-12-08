@@ -1,6 +1,6 @@
 import { loadFixture } from "@nomicfoundation/hardhat-toolbox-viem/network-helpers";
 import { expect } from "chai";
-import { ignition,viem } from "hardhat";
+import { ignition, viem } from "hardhat";
 import { parseEther } from "viem";
 
 import DHKModule from "../ignition/modules/DHK";
@@ -9,18 +9,15 @@ describe("DHK", async function () {
   async function deployToken() {
     const [deployer, rick, kin, bob] = await viem.getWalletClients();
     const publicClient = await viem.getPublicClient();
-    const { dhk, dhkImpl, dhkProxy } = await ignition.deploy(
-      DHKModule,
-      {
-        parameters: {
-          DHKModule: {
-            initOwner: deployer.account.address,
-          },
+    const { dhk, dhkImpl, dhkProxy } = await ignition.deploy(DHKModule, {
+      parameters: {
+        DHKModule: {
+          initOwner: deployer.account.address,
         },
-        defaultSender: deployer.account.address,
-        strategy: "create2",
       },
-    );
+      defaultSender: deployer.account.address,
+      strategy: "create2",
+    });
 
     return {
       dhk,
@@ -59,9 +56,7 @@ describe("DHK", async function () {
       const amount = parseEther("100");
 
       await dhk.write.mint([bob.account.address, amount]);
-      expect(await dhk.read.balanceOf([bob.account.address])).to.equal(
-        amount,
-      );
+      expect(await dhk.read.balanceOf([bob.account.address])).to.equal(amount);
     });
 
     it("Should fail to mint tokens if not owner", async function () {
@@ -105,10 +100,7 @@ describe("DHK", async function () {
       });
 
       expect(
-        await dhk.read.allowance([
-          rick.account.address,
-          bob.account.address,
-        ]),
+        await dhk.read.allowance([rick.account.address, bob.account.address]),
       ).to.equal(halfAmount);
 
       await dhk.write.transferFrom(
@@ -123,10 +115,7 @@ describe("DHK", async function () {
         halfAmount,
       );
       expect(
-        await dhk.read.allowance([
-          rick.account.address,
-          bob.account.address,
-        ]),
+        await dhk.read.allowance([rick.account.address, bob.account.address]),
       ).to.equal(0n);
     });
 
